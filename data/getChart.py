@@ -40,8 +40,9 @@ for file in os.listdir(directory):
                 which_key = node["position"]
                 start_time = node["timing_sec"] /duration
                 end_time = node["timing_sec"] /duration
-            line = [start_time, end_time, is_long, which_key]
+            line = [start_time, end_time, is_long, which_key, duration]
             song_matrix.append(line)
+        song_matrix.append([1, 1, 0, 0, duration])
         result[music_name.split(".")[0]] = song_matrix
 # print(result)
 # write result to json file

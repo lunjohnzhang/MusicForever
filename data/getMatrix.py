@@ -6,9 +6,16 @@ import os
 import json
 import codecs
 
+# write stringified result object to file
+def saveJson(filename, tosave):
+    print("saving matrix" + filename + "as json...")
+    file_path = "matrix/" + filename + ".json"
+    json.dump(tosave, codecs.open(file_path, 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)  # this saves the array in .json format
+    print("saved!\n")
+
+
 directory_in_str = "wav_music"
 directory = os.fsencode(directory_in_str)
-result = {} # store all of the resulting matrix
 
 for file in os.listdir(directory):
     filename = os.fsdecode(file)
@@ -21,13 +28,8 @@ for file in os.listdir(directory):
 
     # Create the spectrogram for the music
     freqs, times, Sx = scipy.signal.spectrogram(aud_data, fs=rate, scaling='spectrum', mode="magnitude")
-    # print(Sx)
+    
     print(filename + " extracted")
-    result[filename.split(".")[0]] = Sx.tolist()
+    saveJson(filename.split(".")[0], Sx.tolist())
 
-# write stringified result object to file
-print("saving matrixes as json...")
-file_path = "matrix.json"
-json.dump(result, codecs.open(file_path, 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True, indent=4)  # this saves the array in .json format
-print("saved!")
 
