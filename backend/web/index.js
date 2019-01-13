@@ -7,10 +7,10 @@ let objects = [];
 let trackMesh = [];
 let sound;
 let se = [
-	new Howl({src: 'se/perfect.mp3', volume: 0.5}),
-	new Howl({src: 'se/great.mp3', volume: 0.5}),
-	new Howl({src: 'se/good.mp3', volume: 0.5}),
-	new Howl({src: 'se/bad.mp3', volume: 0.5})
+	new Howl({src: 'se/perfect.mp3', volume: 0.4}),
+	new Howl({src: 'se/great.mp3', volume: 0.4}),
+	new Howl({src: 'se/good.mp3', volume: 0.4}),
+	new Howl({src: 'se/bad.mp3', volume: 0.4})
 ];
 const MaxDepth = 50;
 const MinDepth = -2;
